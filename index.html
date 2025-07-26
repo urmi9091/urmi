@@ -3,454 +3,554 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MagicBG - Free AI Background Remover</title>
+    <meta name="description" content="Get free temporary email instantly. Receive verification codes and links anonymously. No registration required.">
+    <meta name="keywords" content="temporary email, disposable email, fake email, anonymous email, email verification">
+    <title>TempMail - Free Temporary Email Service</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .file-upload {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
         }
-        .file-upload:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        .file-upload input[type="file"] {
-            position: absolute;
-            top: 0;
-            right: 0;
-            min-width: 100%;
-            min-height: 100%;
-            font-size: 100px;
-            text-align: right;
-            filter: alpha(opacity=0);
-            opacity: 0;
-            outline: none;
-            background: white;
+        .email-item:hover {
+            background-color: #f1f5f9;
             cursor: pointer;
-            display: block;
-        }
-        .comparison-slider {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-            overflow: hidden;
-        }
-        .comparison-slider img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .slider-handle {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: white;
-            cursor: ew-resize;
-            z-index: 10;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-        .slider-handle::after {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: white;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
         .ad-container {
-            background: #f5f5f5;
-            border: 1px dashed #ccc;
+            background-color: #e2e8f0;
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 90px;
-            margin: 1rem 0;
+            justify-content: center;
+            color: #64748b;
         }
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        @media (max-width: 768px) {
-            .sidebar-ad {
-                display: none;
-            }
+        .modal {
+            transition: opacity 0.3s ease;
         }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- Cookie Consent Banner -->
-    <div id="cookieConsent" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 hidden z-50">
-        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
-            <p class="mb-4 md:mb-0">We use cookies to personalize content and ads. By using our site, you consent to our use of cookies.</p>
-            <div>
-                <button id="acceptCookies" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2">Accept</button>
-                <button id="rejectCookies" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">Reject</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Top Ad Banner -->
-    <div class="ad-container w-full">
-        <p class="text-gray-500">Advertisement</p>
-    </div>
-
+<body class="min-h-screen flex flex-col">
     <!-- Header -->
     <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center">
-                    <i class="fas fa-cut text-green-500 text-2xl mr-2"></i>
-                    <h1 class="text-2xl font-bold text-gray-800">MagicBG</h1>
-                </div>
-                <nav class="hidden md:block">
-                    <ul class="flex space-x-8">
-                        <li><a href="#" class="text-gray-600 hover:text-green-500">Home</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-green-500">About</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-green-500">Tools</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-green-500">Privacy</a></li>
-                    </ul>
-                </nav>
-                <button class="md:hidden text-gray-600">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-envelope text-blue-500 text-2xl mr-2"></i>
+                <span class="text-xl font-bold text-gray-800">TempMail</span>
             </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-500">How It Works</a>
+                <a href="#" class="text-gray-600 hover:text-blue-500">FAQ</a>
+                <a href="#" class="text-gray-600 hover:text-blue-500">Contact</a>
+            </nav>
+            <button class="md:hidden text-gray-600">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Top Banner Ad -->
+        <div class="ad-container w-full h-20">
+            <div class="text-center">Advertisement (728x90)</div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <div class="flex flex-col lg:flex-row">
-            <!-- Main Tool Section -->
-            <div class="w-full lg:w-3/4 lg:pr-8">
-                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">AI Background Remover</h2>
-                    <p class="text-gray-600 mb-6">Remove backgrounds from images in seconds. No watermarks, no registration.</p>
-                    
-                    <!-- Upload Section -->
-                    <div class="file-upload bg-green-50 border-2 border-dashed border-green-200 rounded-lg p-8 text-center mb-6">
-                        <i class="fas fa-cloud-upload-alt text-green-500 text-4xl mb-4"></i>
-                        <h3 class="text-xl font-semibold text-gray-700 mb-2">Upload Your Image</h3>
-                        <p class="text-gray-500 mb-4">Supports JPG, PNG, WebP (Max 10MB)</p>
-                        <button class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-full transition duration-300">
-                            Select File
-                        </button>
-                        <input type="file" id="imageUpload" accept="image/jpeg,image/png,image/webp" class="hidden">
-                        <p id="fileName" class="mt-3 text-sm text-gray-500 hidden"></p>
-                    </div>
-
-                    <!-- Processing Section -->
-                    <div id="processingSection" class="hidden">
-                        <button id="removeBgBtn" class="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition duration-300 mb-6">
-                            <i class="fas fa-magic mr-2"></i> Remove Background
-                        </button>
-
-                        <!-- Processing Indicator -->
-                        <div id="processingIndicator" class="hidden text-center py-4">
-                            <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-500 mb-2"></div>
-                            <p class="text-gray-600">Removing background... This may take a moment.</p>
-                            <p class="text-sm text-gray-500 mt-1">Using AI-powered segmentation</p>
-                        </div>
-
-                        <!-- Results Section -->
-                        <div id="resultsSection" class="hidden">
-                            <h3 class="text-lg font-semibold text-gray-700 mb-3">Results</h3>
-                            <div class="comparison-slider mb-6 bg-gray-100 rounded-lg overflow-hidden">
-                                <img id="originalImage" src="" alt="Original Image" class="max-w-full">
-                                <img id="removedBgImage" src="" alt="Background Removed" class="max-w-full" style="width: 50%;">
-                                <div class="slider-handle" style="left: 50%;"></div>
-                            </div>
-
-                            <div class="flex flex-col sm:flex-row sm:space-x-4">
-                                <button id="downloadBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition duration-300 mb-3 sm:mb-0 flex-1">
-                                    <i class="fas fa-download mr-2"></i> Download PNG
-                                </button>
-                                <button id="newImageBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-6 rounded-lg transition duration-300 flex-1">
-                                    <i class="fas fa-redo mr-2"></i> Process New Image
-                                </button>
-                            </div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get Your Temporary Email Instantly!</h1>
+            <p class="text-lg text-gray-600 mb-8">Receive verification codes or links in seconds. Inbox auto-refreshes every 10 seconds.</p>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+                <div class="flex flex-col md:flex-row gap-4 mb-6">
+                    <button id="generateEmail" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 flex-grow">
+                        Generate New Email
+                    </button>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <div class="flex flex-col md:flex-row md:items-center gap-2">
+                        <label class="text-gray-600 font-medium">Your Temporary Email:</label>
+                        <div class="flex-grow flex items-center">
+                            <input type="text" id="tempEmail" readonly class="bg-white border border-gray-300 rounded-l-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button id="copyEmail" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-lg transition duration-200">
+                                <i class="far fa-copy"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Bottom Ad (Mobile) -->
-                <div class="ad-container md:hidden">
-                    <p class="text-gray-500">Advertisement</p>
-                </div>
-
-                <!-- Features Section -->
-                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Why Use Our Background Remover?</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="text-center p-4">
-                            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-bolt text-green-500 text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Instant Results</h3>
-                            <p class="text-gray-600">AI removes backgrounds in seconds.</p>
-                        </div>
-                        <div class="text-center p-4">
-                            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-cut text-green-500 text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Precision Cutouts</h3>
-                            <p class="text-gray-600">Clean edges with no artifacts.</p>
-                        </div>
-                        <div class="text-center p-4">
-                            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-lock-open text-green-500 text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-700 mb-2">No Watermarks</h3>
-                            <p class="text-gray-600">Download transparent PNGs for free.</p>
-                        </div>
-                    </div>
-                </div>
+                
+                <p class="text-sm text-gray-500">Emails auto-delete after 24 hours. No registration required.</p>
             </div>
+        </section>
 
-            <!-- Sidebar -->
-            <div class="w-full lg:w-1/4 mt-8 lg:mt-0">
-                <!-- Sidebar Ad (Desktop) -->
-                <div class="sidebar-ad ad-container hidden md:block mb-6">
-                    <p class="text-gray-500">Advertisement</p>
-                </div>
-
-                <!-- Other Tools -->
-                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">More Free Tools</h3>
-                    <div class="space-y-4">
-                        <a href="#" class="tool-card block bg-gray-50 hover:bg-green-50 border border-gray-200 rounded-lg p-4 transition duration-300">
-                            <div class="flex items-center">
-                                <div class="bg-green-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-expand-alt text-green-500"></i>
-                                </div>
-                                <span class="font-medium text-gray-700">Image Upscaler</span>
-                            </div>
-                        </a>
-                        <a href="#" class="tool-card block bg-gray-50 hover:bg-green-50 border border-gray-200 rounded-lg p-4 transition duration-300">
-                            <div class="flex items-center">
-                                <div class="bg-green-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-compress-alt text-green-500"></i>
-                                </div>
-                                <span class="font-medium text-gray-700">Image Compressor</span>
-                            </div>
-                        </a>
-                        <a href="#" class="tool-card block bg-gray-50 hover:bg-green-50 border border-gray-200 rounded-lg p-4 transition duration-300">
-                            <div class="flex items-center">
-                                <div class="bg-green-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-palette text-green-500"></i>
-                                </div>
-                                <span class="font-medium text-gray-700">Colorize Photos</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Testimonials -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">What Users Say</h3>
-                    <div class="space-y-4">
-                        <div class="bg-green-50 rounded-lg p-4">
-                            <div class="flex items-center mb-2">
-                                <div class="text-yellow-400 mr-1">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 mb-2">"Perfect for my eCommerce product photos! Saves me hours in Photoshop."</p>
-                            <p class="text-sm text-gray-500">- Lisa M.</p>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-4">
-                            <div class="flex items-center mb-2">
-                                <div class="text-yellow-400 mr-1">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 mb-2">"The best free background remover I've used. Works great for memes too!"</p>
-                            <p class="text-sm text-gray-500">- James R.</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Left Side Vertical Ad (Desktop) -->
+        <div class="hidden lg:block fixed left-4 top-1/2 transform -translate-y-1/2">
+            <div class="ad-container w-32 h-96">
+                <div class="text-center vertical-text">Advertisement (120x600)</div>
             </div>
         </div>
+
+        <!-- Right Side Vertical Ad (Desktop) -->
+        <div class="hidden lg:block fixed right-4 top-1/2 transform -translate-y-1/2">
+            <div class="ad-container w-32 h-96">
+                <div class="text-center vertical-text">Advertisement (120x600)</div>
+            </div>
+        </div>
+
+        <!-- Inbox Section -->
+        <section class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="border-b border-gray-200 px-6 py-4">
+                <h2 class="text-xl font-semibold text-gray-800">Inbox</h2>
+                <div class="flex items-center mt-1">
+                    <span id="refreshStatus" class="text-sm text-gray-500">Auto-refreshing in <span id="countdown">10</span> seconds</span>
+                    <button id="manualRefresh" class="ml-4 text-blue-500 hover:text-blue-700 text-sm font-medium">
+                        <i class="fas fa-sync-alt mr-1"></i> Refresh Now
+                    </button>
+                </div>
+            </div>
+            
+            <div id="inboxContainer" class="divide-y divide-gray-200">
+                <div class="px-6 py-4 text-center text-gray-500">
+                    <i class="fas fa-inbox text-3xl mb-2"></i>
+                    <p>Waiting for incoming emails... (auto-refreshing)</p>
+                </div>
+            </div>
+            
+            <!-- Mid-Inbox Ad -->
+            <div class="ad-container h-20 my-4">
+                <div class="text-center">Advertisement (Native Style)</div>
+            </div>
+            
+            <!-- More email items would appear here -->
+        </section>
+
+        <!-- Features Section -->
+        <section class="max-w-4xl mx-auto mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-blue-500 text-3xl mb-3">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">No Registration</h3>
+                    <p class="text-gray-600">Start using immediately with zero setup.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-blue-500 text-3xl mb-3">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">100% Private</h3>
+                    <p class="text-gray-600">Your identity stays completely anonymous.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-blue-500 text-3xl mb-3">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Auto-Refresh</h3>
+                    <p class="text-gray-600">Inbox updates every 10 seconds automatically.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-blue-500 text-3xl mb-3">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Auto-Delete</h3>
+                    <p class="text-gray-600">Emails are deleted after 24 hours.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="max-w-4xl mx-auto mt-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Frequently Asked Questions</h2>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="border-b border-gray-200">
+                    <button class="faq-toggle w-full px-6 py-4 text-left hover:bg-gray-50 transition duration-200 flex justify-between items-center">
+                        <span class="font-medium text-gray-800">Is this service free to use?</span>
+                        <i class="fas fa-chevron-down text-gray-500 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-4 hidden">
+                        <p class="text-gray-600">Yes, our temporary email service is completely free to use. There are no hidden charges or premium features.</p>
+                    </div>
+                </div>
+                
+                <div class="border-b border-gray-200">
+                    <button class="faq-toggle w-full px-6 py-4 text-left hover:bg-gray-50 transition duration-200 flex justify-between items-center">
+                        <span class="font-medium text-gray-800">How long do emails last?</span>
+                        <i class="fas fa-chevron-down text-gray-500 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-4 hidden">
+                        <p class="text-gray-600">All emails and messages are automatically deleted after 24 hours from the time they are received.</p>
+                    </div>
+                </div>
+                
+                <div class="border-b border-gray-200">
+                    <button class="faq-toggle w-full px-6 py-4 text-left hover:bg-gray-50 transition duration-200 flex justify-between items-center">
+                        <span class="font-medium text-gray-800">Can I reply from the temporary email?</span>
+                        <i class="fas fa-chevron-down text-gray-500 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-4 hidden">
+                        <p class="text-gray-600">No, this is a receive-only email service. You cannot send emails from your temporary address.</p>
+                    </div>
+                </div>
+                
+                <div class="border-b border-gray-200">
+                    <button class="faq-toggle w-full px-6 py-4 text-left hover:bg-gray-50 transition duration-200 flex justify-between items-center">
+                        <span class="font-medium text-gray-800">Is it legal to use this for verification?</span>
+                        <i class="fas fa-chevron-down text-gray-500 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-4 hidden">
+                        <p class="text-gray-600">While using temporary email is generally legal, some services may prohibit it in their terms. Check the terms of service for the website you're registering with.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Bottom Banner Ad -->
+            <div class="ad-container w-full h-20 mb-8">
+                <div class="text-center">Advertisement (728x90)</div>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">MagicBG</h3>
-                    <p class="text-gray-400">Free AI tools for your images. No watermarks, no registration.</p>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-envelope text-blue-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">TempMail</span>
+                    </div>
+                    <p class="text-gray-400">Free temporary email service to protect your privacy and avoid spam.</p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Tools</h3>
+                    <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Background Remover</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Image Upscaler</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Photo Enhancer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">How It Works</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <h3 class="font-semibold text-lg mb-4">Legal</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">DMCA</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                    <h3 class="font-semibold text-lg mb-4">Connect</h3>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-reddit"></i></a>
                         <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
+            
             <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-                <p>© 2023 MagicBG. All rights reserved.</p>
+                <p>&copy; 2023 TempMail. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Email Modal -->
+    <div id="emailModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-gray-800" id="modalSubject">Email Subject</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="px-6 py-4">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <p class="font-medium" id="modalSender">From: sender@example.com</p>
+                        <p class="text-sm text-gray-500" id="modalDate">Received: Just now</p>
+                    </div>
+                    <button id="deleteEmail" class="text-red-500 hover:text-red-700">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </div>
+                <div class="border-t border-gray-200 pt-4">
+                    <div id="modalBody" class="prose max-w-none">
+                        <!-- Email content will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Cookie Consent
-        document.addEventListener('DOMContentLoaded', function() {
-            if (!localStorage.getItem('cookieConsent')) {
-                document.getElementById('cookieConsent').classList.remove('hidden');
+        // Sample data for demonstration
+        const sampleDomains = ['@tempmail.com', '@maildrop.cc', '@tempinbox.xyz', '@fakemail.net'];
+        const sampleEmails = [
+            {
+                id: 1,
+                from: 'support@service.com',
+                subject: 'Your verification code',
+                body: 'Your verification code is: <strong>584932</strong>. Please enter this code to verify your account. This code will expire in 10 minutes.',
+                date: '2 minutes ago',
+                read: false
+            },
+            {
+                id: 2,
+                from: 'newsletter@tech.com',
+                subject: 'Weekly Tech Digest',
+                body: 'Here are this week\'s top tech stories:\n\n1. New smartphone breaks performance records\n2. AI tool can now write complete novels\n3. Major security update for all browsers',
+                date: '15 minutes ago',
+                read: false
+            },
+            {
+                id: 3,
+                from: 'no-reply@social.net',
+                subject: 'Password reset requested',
+                body: 'We received a request to reset your password. If you didn\'t make this request, you can ignore this email. Otherwise, click the link below to reset your password:\n\n<a href="#" class="text-blue-500">Reset Password</a>',
+                date: '1 hour ago',
+                read: true
             }
+        ];
 
-            document.getElementById('acceptCookies').addEventListener('click', function() {
-                localStorage.setItem('cookieConsent', 'accepted');
-                document.getElementById('cookieConsent').classList.add('hidden');
-                // Load AdSense here
-                console.log('AdSense would load now');
+        // DOM Elements
+        const generateEmailBtn = document.getElementById('generateEmail');
+        const tempEmailInput = document.getElementById('tempEmail');
+        const copyEmailBtn = document.getElementById('copyEmail');
+        const inboxContainer = document.getElementById('inboxContainer');
+        const manualRefreshBtn = document.getElementById('manualRefresh');
+        const countdownElement = document.getElementById('countdown');
+        const refreshStatus = document.getElementById('refreshStatus');
+        const emailModal = document.getElementById('emailModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modalSubject = document.getElementById('modalSubject');
+        const modalSender = document.getElementById('modalSender');
+        const modalDate = document.getElementById('modalDate');
+        const modalBody = document.getElementById('modalBody');
+        const deleteEmailBtn = document.getElementById('deleteEmail');
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+
+        // State
+        let currentEmail = '';
+        let refreshInterval;
+        let countdown = 10;
+        let emails = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate first email
+            generateRandomEmail();
+            
+            // Load sample emails
+            emails = [...sampleEmails];
+            renderInbox();
+            
+            // Start auto-refresh
+            startAutoRefresh();
+        });
+
+        // Event Listeners
+        generateEmailBtn.addEventListener('click', generateRandomEmail);
+        copyEmailBtn.addEventListener('click', copyEmailToClipboard);
+        manualRefreshBtn.addEventListener('click', manualRefresh);
+        closeModalBtn.addEventListener('click', closeModal);
+        deleteEmailBtn.addEventListener('click', deleteCurrentEmail);
+
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
             });
+        });
 
-            document.getElementById('rejectCookies').addEventListener('click', function() {
-                localStorage.setItem('cookieConsent', 'rejected');
-                document.getElementById('cookieConsent').classList.add('hidden');
-            });
+        // Functions
+        function generateRandomEmail() {
+            const randomString = Math.random().toString(36).substring(2, 10);
+            const randomDomain = sampleDomains[Math.floor(Math.random() * sampleDomains.length)];
+            currentEmail = randomString + randomDomain;
+            tempEmailInput.value = currentEmail;
+            
+            // Show notification
+            showNotification('New email address generated and copied to clipboard!');
+            
+            // Copy to clipboard automatically
+            copyEmailToClipboard();
+            
+            // Clear existing emails
+            emails = [];
+            renderInbox();
+        }
 
-            // Image Upload Handling
-            const fileUpload = document.getElementById('imageUpload');
-            const fileName = document.getElementById('fileName');
-            const processingSection = document.getElementById('processingSection');
-            const processingIndicator = document.getElementById('processingIndicator');
-            const resultsSection = document.getElementById('resultsSection');
-            const removeBgBtn = document.getElementById('removeBgBtn');
-            const downloadBtn = document.getElementById('downloadBtn');
-            const newImageBtn = document.getElementById('newImageBtn');
-            const originalImage = document.getElementById('originalImage');
-            const removedBgImage = document.getElementById('removedBgImage');
+        function copyEmailToClipboard() {
+            navigator.clipboard.writeText(currentEmail)
+                .then(() => {
+                    showNotification('Email address copied to clipboard!');
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        }
 
-            fileUpload.addEventListener('change', function(e) {
-                if (e.target.files.length > 0) {
-                    const file = e.target.files[0];
-                    if (file.size > 10 * 1024 * 1024) {
-                        alert('File size exceeds 10MB limit.');
-                        return;
-                    }
+        function showNotification(message) {
+            // In a real app, you might use a more sophisticated notification system
+            alert(message); // Simple alert for demo purposes
+        }
 
-                    fileName.textContent = `Selected: ${file.name}`;
-                    fileName.classList.remove('hidden');
-                    processingSection.classList.remove('hidden');
-
-                    // Preview original image
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        originalImage.src = event.target.result;
-                    };
-                    reader.readAsDataURL(file);
+        function startAutoRefresh() {
+            refreshInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    refreshInbox();
+                    countdown = 10;
                 }
+            }, 1000);
+        }
+
+        function manualRefresh() {
+            refreshInbox();
+            countdown = 10;
+            countdownElement.textContent = countdown;
+        }
+
+        function refreshInbox() {
+            // Show loading state
+            refreshStatus.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-1"></i> Refreshing inbox...';
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // In a real app, this would fetch from your backend API
+                // For demo, we'll just use the sample data
+                if (emails.length === 0 && Math.random() > 0.5) {
+                    // 50% chance to add a new email when inbox is empty
+                    const newEmail = {
+                        id: Date.now(),
+                        from: `service${Math.floor(Math.random() * 100)}@example.com`,
+                        subject: `Your verification code ${Math.floor(100000 + Math.random() * 900000)}`,
+                        body: `Your verification code is: <strong>${Math.floor(100000 + Math.random() * 900000)}</strong>. Please enter this code to complete your registration.`,
+                        date: 'Just now',
+                        read: false
+                    };
+                    emails.unshift(newEmail);
+                    
+                    // Show notification for new email
+                    if (document.visibilityState === 'visible') {
+                        showNotification(`New email received: ${newEmail.subject}`);
+                    }
+                }
+                
+                renderInbox();
+                refreshStatus.innerHTML = `Auto-refreshing in <span id="countdown">10</span> seconds`;
+            }, 1000);
+        }
+
+        function renderInbox() {
+            if (emails.length === 0) {
+                inboxContainer.innerHTML = `
+                    <div class="px-6 py-4 text-center text-gray-500">
+                        <i class="fas fa-inbox text-3xl mb-2"></i>
+                        <p>Waiting for incoming emails... (auto-refreshing)</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let inboxHTML = '';
+            let adCounter = 0;
+            
+            emails.forEach((email, index) => {
+                // Add ad after every 2 emails
+                if (index > 0 && index % 2 === 0) {
+                    adCounter++;
+                    inboxHTML += `
+                        <div class="ad-container h-20 my-4">
+                            <div class="text-center">Advertisement (Native Style)</div>
+                        </div>
+                    `;
+                }
+                
+                inboxHTML += `
+                    <div class="email-item px-6 py-4 hover:bg-gray-50 ${email.read ? '' : 'bg-blue-50'}" data-id="${email.id}">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 pt-1">
+                                <i class="fas ${email.read ? 'fa-envelope-open text-gray-400' : 'fa-envelope text-blue-500'}"></i>
+                            </div>
+                            <div class="ml-4 flex-1 min-w-0">
+                                <div class="flex justify-between">
+                                    <p class="text-sm font-medium ${email.read ? 'text-gray-600' : 'text-gray-900'} truncate">${email.from}</p>
+                                    <p class="text-xs text-gray-500 ml-2 whitespace-nowrap">${email.date}</p>
+                                </div>
+                                <p class="text-sm font-semibold ${email.read ? 'text-gray-800' : 'text-gray-900'} mt-1">${email.subject}</p>
+                                <p class="text-sm text-gray-500 mt-1 truncate">${email.body.replace(/<[^>]*>?/gm, '').substring(0, 100)}...</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
             });
-
-            removeBgBtn.addEventListener('click', function() {
-                processingIndicator.classList.remove('hidden');
-                removeBgBtn.disabled = true;
-
-                // Simulate AI processing
-                setTimeout(function() {
-                    processingIndicator.classList.add('hidden');
-                    resultsSection.classList.remove('hidden');
-
-                    // In a real app, this would be the transparent image from your API
-                    removedBgImage.src = originalImage.src; // Replace with actual transparent PNG
-                }, 3000);
+            
+            inboxContainer.innerHTML = inboxHTML;
+            
+            // Add click handlers to email items
+            document.querySelectorAll('.email-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const emailId = parseInt(this.getAttribute('data-id'));
+                    openEmail(emailId);
+                });
             });
+        }
 
-            downloadBtn.addEventListener('click', function() {
-                alert('In a real app, this would download the transparent PNG.');
-            });
+        function openEmail(emailId) {
+            const email = emails.find(e => e.id === emailId);
+            if (!email) return;
+            
+            // Mark as read
+            email.read = true;
+            
+            // Update modal content
+            modalSubject.textContent = email.subject;
+            modalSender.textContent = `From: ${email.from}`;
+            modalDate.textContent = `Received: ${email.date}`;
+            modalBody.innerHTML = email.body.replace(/\n/g, '<br>');
+            
+            // Store current email ID on delete button
+            deleteEmailBtn.setAttribute('data-id', emailId);
+            
+            // Show modal
+            emailModal.classList.remove('hidden');
+            
+            // Re-render inbox to update read status
+            renderInbox();
+        }
 
-            newImageBtn.addEventListener('click', function() {
-                fileUpload.value = '';
-                fileName.classList.add('hidden');
-                processingSection.classList.add('hidden');
-                resultsSection.classList.add('hidden');
-                removeBgBtn.disabled = false;
-            });
+        function closeModal() {
+            emailModal.classList.add('hidden');
+        }
 
-            // Comparison Slider
-            const slider = document.querySelector('.comparison-slider');
-            const handle = document.querySelector('.slider-handle');
-            let isDragging = false;
+        function deleteCurrentEmail() {
+            const emailId = parseInt(deleteEmailBtn.getAttribute('data-id'));
+            emails = emails.filter(e => e.id !== emailId);
+            closeModal();
+            renderInbox();
+        }
 
-            handle.addEventListener('mousedown', function() {
-                isDragging = true;
-            });
+        // Close modal when clicking outside
+        emailModal.addEventListener('click', function(e) {
+            if (e.target === emailModal) {
+                closeModal();
+            }
+        });
 
-            document.addEventListener('mousemove', function(e) {
-                if (!isDragging) return;
-
-                const sliderRect = slider.getBoundingClientRect();
-                let newWidth = (e.clientX - sliderRect.left) / sliderRect.width * 100;
-
-                newWidth = Math.max(5, Math.min(95, newWidth));
-
-                removedBgImage.style.width = `${newWidth}%`;
-                handle.style.left = `${newWidth}%`;
-            });
-
-            document.addEventListener('mouseup', function() {
-                isDragging = false;
-            });
-
-            // Touch support for mobile
-            handle.addEventListener('touchstart', function() {
-                isDragging = true;
-            });
-
-            document.addEventListener('touchmove', function(e) {
-                if (!isDragging) return;
-
-                const sliderRect = slider.getBoundingClientRect();
-                let newWidth = (e.touches[0].clientX - sliderRect.left) / sliderRect.width * 100;
-
-                newWidth = Math.max(5, Math.min(95, newWidth));
-
-                removedBgImage.style.width = `${newWidth}%`;
-                handle.style.left = `${newWidth}%`;
-            });
-
-            document.addEventListener('touchend', function() {
-                isDragging = false;
-            });
+        // Handle keyboard events
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !emailModal.classList.contains('hidden')) {
+                closeModal();
+            }
         });
     </script>
 </body>
